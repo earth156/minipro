@@ -125,11 +125,11 @@ class _ShowlottoPageState extends State<ShowlottoPage> {
                           children: [
                             Text(
                               'หมายเลข: ${lotto.lottoNum}',
-                              style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                              style: const TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
                             ),
                             Text(
                               'ราคา: ${lotto.price} บาท',
-                              style: const TextStyle(fontSize: 16.0),
+                              style: const TextStyle(fontSize: 14.0),
                             ),
                           ],
                         ),

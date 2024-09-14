@@ -62,158 +62,160 @@ class ProfilecusPageState extends State<ProfilecusPage> {
         ),
         backgroundColor: Colors.indigo[900], // สีของ AppBar
       ),
-      body: Stack(
-        children: [
-          // พื้นหลังสีขาว
-          Container(
-            color: Colors.white,
-          ),
-          // พื้นหลังสีน้ำเงิน
-          Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            child: Container(
-              height: 150.0,
-              color: Colors.indigo[900], // สีพื้นหลังด้านบน
+      body: SingleChildScrollView(
+        child: Stack(
+          children: [
+            // พื้นหลังสีขาว
+            Container(
+              color: Colors.white,
             ),
-          ),
-          // วงกลมโปรไฟล์พร้อมการเลือกภาพ
-          Positioned(
-            top: 80.0,
-            left: MediaQuery.of(context).size.width / 2 - 70.0,
-            child: GestureDetector(
-              onTap: _pickImage, // เรียกใช้ฟังก์ชันเลือกรูปภาพเมื่อกด
-              child: ClipOval(
-                child: Container(
-                  width: 130.0,
-                  height: 130.0,
-                  color: Colors.blueGrey[200],
-                  child: _image == null
-                      ? const Center(
-                          child: Icon(
-                            Icons.person,
-                            size: 60.0,
-                            color: Colors.white,
+            // พื้นหลังสีน้ำเงิน
+            Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
+              child: Container(
+                height: 150.0,
+                color: Colors.indigo[900], // สีพื้นหลังด้านบน
+              ),
+            ),
+            // วงกลมโปรไฟล์พร้อมการเลือกภาพ
+            Positioned(
+              top: 80.0,
+              left: MediaQuery.of(context).size.width / 2 - 70.0,
+              child: GestureDetector(
+                onTap: _pickImage, // เรียกใช้ฟังก์ชันเลือกรูปภาพเมื่อกด
+                child: ClipOval(
+                  child: Container(
+                    width: 130.0,
+                    height: 130.0,
+                    color: Colors.blueGrey[200],
+                    child: _image == null
+                        ? const Center(
+                            child: Icon(
+                              Icons.person,
+                              size: 60.0,
+                              color: Colors.white,
+                            ),
+                          )
+                        : Image.file(
+                            _image!,
+                            fit: BoxFit.cover,
                           ),
-                        )
-                      : Image.file(
-                          _image!,
-                          fit: BoxFit.cover,
-                        ),
+                  ),
                 ),
               ),
             ),
-          ),
-          // ข้อความโปรไฟล์
-          const Positioned(
-            top: 30.0,
-            left: 0.0,
-            right: 15.0,
-            child: Center(
-              child: Text(
-                'โปรไฟล์',
-                style: TextStyle(fontSize: 20, color: Colors.white),
-                textAlign: TextAlign.center,
+            // ข้อความโปรไฟล์
+            const Positioned(
+              top: 30.0,
+              left: 0.0,
+              right: 15.0,
+              child: Center(
+                child: Text(
+                  'โปรไฟล์',
+                  style: TextStyle(fontSize: 20, color: Colors.white),
+                  textAlign: TextAlign.center,
+                ),
               ),
             ),
-          ),
-          Positioned(
-            top: 200.0,
-            left: 0,
-            right: 0,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.only(top: 5),
-                    child: Text('ชื่อ-นามสกุล'),
-                  ),
-                  TextField(
-                    controller: nameCtl,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
+            Positioned(
+              top: 200.0,
+              left: 0,
+              right: 0,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(top: 5),
+                      child: Text('ชื่อ-นามสกุล'),
                     ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 5),
-                    child: Text('หมายเลขโทรศัพท์'),
-                  ),
-                  TextField(
-                    controller: phoneCtl,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
+                    TextField(
+                      controller: nameCtl,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                      ),
                     ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 5),
-                    child: Text('อีเมล์'),
-                  ),
-                  TextField(
-                    controller: emailCtl,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 5),
+                      child: Text('หมายเลขโทรศัพท์'),
                     ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 5),
-                    child: Text('รหัสผ่าน'),
-                  ),
-                  TextField(
-                    controller: passwordCtl1,
-                    obscureText: true,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
+                    TextField(
+                      controller: phoneCtl,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                      ),
                     ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text('ยืนยันรหัสผ่าน'),
-                      ],
+                    const Padding(
+                      padding: EdgeInsets.only(top: 5),
+                      child: Text('อีเมล์'),
                     ),
-                  ),
-                  TextField(
-                    controller: passwordCtl2,
-                    obscureText: true,
-                    decoration: const InputDecoration(
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(width: 1))),
-                  ),
-                  const SizedBox(height: 30),
-                  Center(
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // เช็คการยืนยันรหัสผ่าน
-                        if (passwordCtl1.text != passwordCtl2.text) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('รหัสผ่านไม่ตรงกัน')),
-                          );
-                        } else {
-                          // เรียกใช้ฟังก์ชัน editUser เพื่ออัปเดตข้อมูล
-                          editUser();
-                        }
-                      },
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(
-                          Colors.yellow[700],
+                    TextField(
+                      controller: emailCtl,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 5),
+                      child: Text('รหัสผ่าน'),
+                    ),
+                    TextField(
+                      controller: passwordCtl1,
+                      obscureText: true,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 15),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text('ยืนยันรหัสผ่าน'),
+                        ],
+                      ),
+                    ),
+                    TextField(
+                      controller: passwordCtl2,
+                      obscureText: true,
+                      decoration: const InputDecoration(
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide(width: 1))),
+                    ),
+                    const SizedBox(height: 30),
+                    Center(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // เช็คการยืนยันรหัสผ่าน
+                          if (passwordCtl1.text != passwordCtl2.text) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text('รหัสผ่านไม่ตรงกัน')),
+                            );
+                          } else {
+                            // เรียกใช้ฟังก์ชัน editUser เพื่ออัปเดตข้อมูล
+                            editUser();
+                          }
+                        },
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                            Colors.yellow[700],
+                          ),
+                        ),
+                        child: const Text(
+                          'แก้ไขข้อมูล',
+                          style: TextStyle(color: Colors.white),
                         ),
                       ),
-                      child: const Text(
-                        'แก้ไขข้อมูล',
-                        style: TextStyle(color: Colors.white),
-                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
